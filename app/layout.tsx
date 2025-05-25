@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   title: {
     default: "shrey's",
-    template: "%s | shrey's",
+    template: "%s | Shrey Anish",
   },
   description: "",
 };
