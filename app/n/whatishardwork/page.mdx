@@ -1,0 +1,26 @@
+import { AnimatedName } from '../animated-name.tsx';
+
+export const metadata = {
+  title: 'What is Hard Work?',
+  alternates: {
+    canonical: '/n/dx'
+  }
+};
+
+export function Title({children}) {
+  return (
+    <span className="font-serif text-2xl">{children}</span>
+  )
+}
+
+export function Tldr({ children }) {
+  return (
+    <span className="text-sky-400">TL;DR <span className="text-white">{children}</span></span>
+  );
+}
+
+<Title>What is Hard Work?</Title>
+
+<AnimatedName />
+
+<Tldr>Thoughts around work pre-AI, post-AI and post-AGI</Tldr>

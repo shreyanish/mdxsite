@@ -5,7 +5,6 @@ const Footer = () => {
   const links = [
     { name: "x/twitter", url: "https://x.com/shreyanish" },
     { name: "linkedin", url: "https://www.linkedin.com/in/shreyanish" },
-    { name: "github", url: "https://github.com/shreyanish" },
   ];
 
   const [currentTime, setCurrentTime] = useState("");
@@ -30,7 +29,7 @@ const Footer = () => {
             <a
               key={link.name}
               href={link.url}
-              target="_blank"
+              target= "_blank"
               rel="noopener noreferrer"
               className="text-gray-400 dark:text-gray-500 hover:text-sky-400 transition-colors duration-200 text-sm"
             >
