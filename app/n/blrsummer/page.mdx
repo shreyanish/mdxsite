@@ -1,0 +1,26 @@
+import { AnimatedName } from '../animated-name.tsx';
+
+export const metadata = {
+  title: 'A Love Letter',
+  alternates: {
+    canonical: '/n/dx'
+  }
+};
+
+export function Title({children}) {
+  return (
+    <span className="font-serif text-2xl">{children}</span>
+  )
+}
+
+export function Tldr({ children }) {
+  return (
+    <span className="text-sky-400">TL;DR <span className="text-white">{children}</span></span>
+  );
+}
+
+<Title>A Love Letter</Title>
+
+<AnimatedName />
+
+<Tldr>Bender Banglore Summer</Tldr>
