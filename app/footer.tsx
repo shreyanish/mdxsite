@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const Footer = () => {
   const links = [
-    { name: "x/twitter", url: "https://x.com/shreyanish" },
+    { name: "x/twitter", url: "https://x.com/fluxonr" },
     { name: "linkedin", url: "https://www.linkedin.com/in/shreyanish" },
   ];
 
