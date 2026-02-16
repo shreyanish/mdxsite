@@ -1,56 +1,34 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
-import { highlight } from 'sugar-high';
+import Image from 'next/image';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
-type ListProps = ComponentPropsWithoutRef<'ul'>;
-type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
-type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
+type ImgProps = ComponentPropsWithoutRef<'img'>;
 
 const components = {
   h1: (props: HeadingProps) => (
-    <h1 className="font-medium pt-12 mb-0" {...props} />
+    <h1
+      className="font-medium text-[#0B1215] text-[23px] mb-[32px] leading-none"
+      {...props}
+    />
   ),
   h2: (props: HeadingProps) => (
     <h2
-      className="text-gray-800 dark:text-zinc-200 font-medium mt-8 mb-3"
+      className="font-medium text-[#0B1215] text-[17px] mt-[28px] mb-[24px] leading-none clear-both"
       {...props}
     />
   ),
-  h3: (props: HeadingProps) => (
-    <h3
-      className="text-gray-800 dark:text-zinc-200 font-medium mt-8 mb-3"
-      {...props}
-    />
-  ),
-  h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="text-gray-800 dark:text-zinc-300 leading-snug" {...props} />
-  ),
-  ol: (props: ListProps) => (
-    <ol
-      className="text-gray-800 dark:text-zinc-300 list-decimal pl-5 space-y-2"
+    <p
+      className="font-normal text-[#404040] text-[16px] mb-[24px] leading-normal"
       {...props}
     />
-  ),
-  ul: (props: ListProps) => (
-    <ul
-      className="text-gray-800 dark:text-zinc-300 list-disc pl-5 space-y-1"
-      {...props}
-    />
-  ),
-  li: (props: ListItemProps) => <li className="pl-1" {...props} />,
-  em: (props: ComponentPropsWithoutRef<'em'>) => (
-    <em className="font-medium" {...props} />
-  ),
-  strong: (props: ComponentPropsWithoutRef<'strong'>) => (
-    <strong className="font-medium" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className =
-      'text-blue-500 hover:text-blue-700 dark:text-gray-400 hover:dark:text-gray-300 dark:underline dark:underline-offset-2 dark:decoration-gray-800';
+    const className = 'text-[#A2A2A2] hover:text-[#1C45FF] underline underline-offset-4 decoration-1 transition-colors';
+
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
@@ -58,6 +36,7 @@ const components = {
         </Link>
       );
     }
+
     if (href?.startsWith('#')) {
       return (
         <a href={href} className={className} {...props}>
@@ -65,6 +44,7 @@ const components = {
         </a>
       );
     }
+
     return (
       <a
         href={href}
@@ -77,36 +57,24 @@ const components = {
       </a>
     );
   },
-  code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
-    const codeHTML = highlight(children as string);
-    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+  li: (props: ComponentPropsWithoutRef<'li'>) => (
+    <li className="tabular-nums font-normal text-[#404040] text-[16px] leading-normal" {...props} />
+  ),
+  img: (props: ImgProps) => {
+    const isPortrait = props.src === '/meditheredportrait.png';
+    return (
+      <Image
+        src={props.src as string}
+        alt={props.alt || ''}
+        width={400}
+        height={400}
+        priority={isPortrait}
+        unoptimized={true}
+        className="pixelated-image w-1/2 md:w-[calc((100%-72px)/4)] mb-[24px] md:mb-[24px] md:mr-[24px] md:float-left block"
+        style={{ height: 'auto' }}
+      />
+    );
   },
-  Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
-    <table>
-      <thead>
-        <tr>
-          {data.headers.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.rows.map((row, index) => (
-          <tr key={index}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  ),
-  blockquote: (props: BlockquoteProps) => (
-    <blockquote
-      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
-      {...props}
-    />
-  ),
 };
 
 declare global {
