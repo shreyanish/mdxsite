@@ -19,15 +19,17 @@ async function getNoteSlugs(dir: string) {
 }
 
 export default async function sitemap() {
-  const notesDirectory = path.join(process.cwd(), 'app', 'n');
+  const notesDirectory = path.join(process.cwd(), 'app', 'notes');
   const slugs = await getNoteSlugs(notesDirectory);
 
-  const notes = slugs.map((slug) => ({
-    url: `https://shreyanish.com/n/${slug}`,
-    lastModified: new Date().toISOString(),
-  }));
+  const notes = slugs
+    .filter((slug) => slug !== '.')
+    .map((slug) => ({
+      url: `https://shreyanish.com/notes/${slug}`,
+      lastModified: new Date().toISOString(),
+    }));
 
-  const routes = ['', '/work'].map((route) => ({
+  const routes = ['', '/work', '/notes'].map((route) => ({
     url: `https://shreyanish.com${route}`,
     lastModified: new Date().toISOString(),
   }));
