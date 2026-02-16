@@ -13,6 +13,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
+      syncTouch: true,
       infinite: false,
     })
 
