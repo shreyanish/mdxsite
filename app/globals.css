@@ -36,5 +36,11 @@ body {
 @layer utilities {
   .pixelated-image {
     image-rendering: pixelated;
+    view-transition-name: hero-portrait;
   }
+}
+
+::view-transition-new(hero-portrait) {
+  animation-duration: 150ms;
+  animation-timing-function: ease-out;
 }

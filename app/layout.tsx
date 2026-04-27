@@ -35,6 +35,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased tracking-tight font-sans bg-background text-foreground selection:bg-gray-200`}
       >
+        {/* Preload portrait so it's ready instantly when navigating back to home */}
+        <link rel="preload" as="image" href="/meditheredportrait.png" />
 
         {/* Main Grid Container */}
         {/* Mobile: pt-[32px] (Nav top), but if Nav is part of grid, the padding is container padding. */}
