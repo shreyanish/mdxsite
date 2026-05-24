@@ -10,12 +10,13 @@ export function Navigation() {
     { name: "about", url: "/" },
     { name: "work", url: "/work" },
     { name: "notes", url: "/notes" },
+    { name: "gallery", url: "/gallery"}
   ];
 
   return (
     <nav className="
       col-span-4 md:col-span-1 md:col-start-7 md:row-start-1
-      flex flex-col items-end md:justify-start
+      flex flex-col items-start md:justify-end
       gap-[8px]
       text-[14px] leading-none
       mb-[40px] md:mb-0 md:mt-[55px]
