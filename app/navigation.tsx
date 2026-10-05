@@ -10,7 +10,7 @@ export function Navigation() {
     { name: "about", url: "/" },
     { name: "work", url: "/work" },
     { name: "notes", url: "/notes" },
-    { name: "gallery", url: "/gallery"}
+    // { name: "gallery", url: "/gallery"}
   ];
 
   return (
